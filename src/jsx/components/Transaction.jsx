@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
 
@@ -18,10 +17,7 @@ export const Transaction = inject('ExpenceStore')(
 		const liClass = transaction.amount < 0 ? 'minus' : 'plus';
 
 		return (
-			<li
-				// key={uuid()}
-				className={`col item ${liClass}`}
-			>
+			<li className={`col item ${liClass}`}>
 				<div className="col-1 px-1 index">
 					<span>{`${index}.`}</span>
 				</div>
@@ -69,7 +65,6 @@ export const Transaction = inject('ExpenceStore')(
 
 					{!transaction.editing2 ? (
 						<span
-							// key={uuid()}
 							onDoubleClick={(e) =>
 								editTransaction(transaction, 'amount', transaction._id, e)
 							}

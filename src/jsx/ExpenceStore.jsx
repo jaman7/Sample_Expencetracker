@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { toJS, runInAction, makeObservable, configure, observable, action, computed } from 'mobx';
 
@@ -23,7 +22,7 @@ class ExpenceStore {
 		return this.transactions.length;
 	}
 
-	constructor(transactions) {
+	constructor() {
 		makeObservable(this, {
 			isLoading: observable,
 			transactions: observable,

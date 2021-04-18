@@ -71,12 +71,16 @@
 		"jsx-a11y/label-has-for": [
 			2,
 			{
+				"components": [
+					"Label"
+				],
 				"required": {
-					"some": [
+					"every": [
 						"nesting",
 						"id"
 					]
-				}
+				},
+				"allowChildren": false
 			}
 		],
 		"jsx-a11y/aria-role": [

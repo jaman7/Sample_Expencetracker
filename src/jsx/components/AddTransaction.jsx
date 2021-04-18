@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
@@ -30,30 +28,32 @@ export const AddTransaction = inject('ExpenceStore')(
 					<form className="transaction-form py-4" onSubmit={onSubmit}>
 						<div className="form-row">
 							<div className="form-group col-md-6">
-								<label htmlFor="text">Text</label>
-								<input
-									id="text"
-									name="text"
-									className="form-control"
-									type="text"
-									placeholder="Enter text..."
-									value={text}
-									onChange={(e) => setText(e.target.value)}
-								/>
+								<label htmlFor="text">
+									Text
+									<input
+										id="text"
+										name="text"
+										className="form-control"
+										type="text"
+										placeholder="Enter text..."
+										value={text}
+										onChange={(e) => setText(e.target.value)}
+									/>
+								</label>
 							</div>
 							<div className="form-group col-md-6">
 								<label htmlFor="amount">
 									Amount (negative - expense, positive - income)
+									<input
+										id="amount"
+										name="amount"
+										className="form-control"
+										type="number"
+										placeholder="Enter amount..."
+										value={amount}
+										onChange={(e) => setAmount(e.target.value)}
+									/>
 								</label>
-								<input
-									id="amount"
-									name="amount"
-									className="form-control"
-									type="number"
-									placeholder="Enter amount..."
-									value={amount}
-									onChange={(e) => setAmount(e.target.value)}
-								/>
 							</div>
 						</div>
 						<div className="form-group d-flex justify-content-center">

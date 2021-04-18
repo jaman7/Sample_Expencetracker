@@ -2446,8 +2446,6 @@ function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflec
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-/* eslint-disable no-unused-vars */
-
 
 
 
@@ -2497,8 +2495,6 @@ var App = (_dec = (0,mobx_react__WEBPACK_IMPORTED_MODULE_14__.inject)('ExpenceSt
   }, {
     key: "render",
     value: function render() {
-      var ExpenceStore = this.props.ExpenceStore;
-      var transactions = ExpenceStore.transactions;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7__.createElement("div", {
         className: "container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7__.createElement("div", {
@@ -2546,15 +2542,13 @@ var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5,
 
 
 
-/* eslint-disable no-unused-vars */
-
 
 
 (0,mobx__WEBPACK_IMPORTED_MODULE_9__.configure)({
   enforceActions: 'observed'
 });
 var ExpenceStore = (_class = /*#__PURE__*/function () {
-  function ExpenceStore(transactions) {
+  function ExpenceStore() {
     (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__.default)(this, ExpenceStore);
 
     this.isLoading = true;
@@ -2822,8 +2816,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
 
 
-/* eslint-disable jsx-a11y/label-has-associated-control */
-
 
 
 var AddTransaction = (0,mobx_react__WEBPACK_IMPORTED_MODULE_3__.inject)('ExpenceStore')((0,mobx_react__WEBPACK_IMPORTED_MODULE_3__.observer)(function (props) {
@@ -2862,7 +2854,7 @@ var AddTransaction = (0,mobx_react__WEBPACK_IMPORTED_MODULE_3__.inject)('Expence
     className: "form-group col-md-6"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "text"
-  }, "Text"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
+  }, "Text", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     id: "text",
     name: "text",
     className: "form-control",
@@ -2872,11 +2864,11 @@ var AddTransaction = (0,mobx_react__WEBPACK_IMPORTED_MODULE_3__.inject)('Expence
     onChange: function onChange(e) {
       return setText(e.target.value);
     }
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "form-group col-md-6"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "amount"
-  }, "Amount (negative - expense, positive - income)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
+  }, "Amount (negative - expense, positive - income)", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     id: "amount",
     name: "amount",
     className: "form-control",
@@ -2886,7 +2878,7 @@ var AddTransaction = (0,mobx_react__WEBPACK_IMPORTED_MODULE_3__.inject)('Expence
     onChange: function onChange(e) {
       return setAmount(e.target.value);
     }
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "form-group d-flex justify-content-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
     type: "submit",
@@ -2972,7 +2964,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
-/* eslint-disable no-unused-vars */
 
 
 
@@ -2987,7 +2978,6 @@ var Transaction = (0,mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)('ExpenceSto
   var sign = transaction.amount < 0 ? '-' : '+';
   var liClass = transaction.amount < 0 ? 'minus' : 'plus';
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    // key={uuid()}
     className: "col item ".concat(liClass)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "col-1 px-1 index"
@@ -3018,7 +3008,6 @@ var Transaction = (0,mobx_react__WEBPACK_IMPORTED_MODULE_2__.inject)('ExpenceSto
       }
     }
   })), !transaction.editing2 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-    // key={uuid()}
     onDoubleClick: function onDoubleClick(e) {
       return editTransaction(transaction, 'amount', transaction._id, e);
     }
