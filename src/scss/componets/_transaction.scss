@@ -1,0 +1,195 @@
+$BgcolorList: #4132ba !default;
+$BgcolorItem: #443a92 !default;
+$BgcolorPlus: #27843d !default;
+$BgcolorMinus: #721c24 !default;
+
+%flex {
+	display: flex;
+}
+
+%flexVC {
+	align-items: center;
+}
+
+.transaction {
+	&-bg {
+		background-color: $bg-white;
+	}
+
+	&-header {
+		@include fluid-type(2rem, 3.5rem);
+		text-align: center;
+	}
+
+	&-balance {
+		@extend %flex;
+		justify-content: center;
+		align-items: baseline;
+		background-color: green;
+		color: $colorWhite;
+		border-radius: 10px;
+	}
+
+	&-desc {
+		@include fluid-type(1.6rem, 2rem);
+		text-align: center;
+
+		& span {
+			@include fluid-type(2rem, 3rem);
+		}
+	}
+
+	&-bilance {
+		background-color: $BgcolorList;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		border-radius: 10px;
+		color: $colorWhite;
+
+		&_item {
+			@extend %flex;
+			flex-direction: column;
+			@extend %flexVC;
+			justify-content: center;
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+
+			&:first-child {
+				background-color: $BgcolorPlus;
+			}
+
+			&:last-child {
+				background-color: $BgcolorMinus;
+			}
+		}
+
+		& p {
+			@include fluid-type(2rem, 3rem);
+			margin-bottom: 0.3rem;
+		}
+	}
+
+	&-lists {
+		width: 100%;
+		@extend %flex;
+		flex-direction: column;
+		list-style: none;
+		background-color: $BgcolorList;
+		border-radius: 10px;
+		@include padding(1rem);
+		color: $colorWhite;
+
+		& .item {
+			padding: 1rem;
+			@extend %flex;
+			background-color: $BgcolorItem;
+			margin-bottom: 0.3rem;
+			border-radius: 10px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			&.plus {
+				background-color: $BgcolorPlus;
+			}
+
+			&.minus {
+				background-color: $BgcolorMinus;
+			}
+		}
+
+		& .content {
+			@extend %flex;
+			@extend %flexVC;
+			justify-content: space-between;
+
+			& span {
+				@include fluid-type(1.2rem, 3rem);
+			}
+
+			& p {
+				margin-bottom: 0;
+				padding-top: 0.2rem;
+				padding-bottom: 0.2rem;
+			}
+		}
+
+		& .index {
+			@extend %flex;
+			@extend %flexVC;
+			justify-content: flex-start;
+
+			& span {
+				@include fluid-type(1.2rem, 1.6rem);
+				font-weight: 700;
+			}
+		}
+
+		& .action {
+			@extend %flex;
+			@extend %flexVC;
+			justify-content: flex-end;
+
+			& .btn {
+				padding: 0;
+				background-color: transparent;
+				border: 0;
+
+				& i {
+					transition: all 0.3s ease-in-out;
+
+					&:hover {
+						opacity: 0.7;
+					}
+				}
+			}
+		}
+	}
+
+	& .bg-form {
+		background-color: honeydew;
+	}
+
+	& svg.chart {
+		max-height: 200px;
+	}
+}
+
+.fade {
+	&-enter {
+		opacity: 0;
+		transform: scale(1.1);
+
+		&-active {
+			opacity: 1;
+			transform: scale(1);
+
+			@include transition-all(0.5s);
+		}
+	}
+
+	&-exit {
+		opacity: 1;
+		transform: scale(1);
+
+		&-active {
+			opacity: 0;
+			transform: scale(0.5);
+
+			@include transition-all(0.5s);
+		}
+	}
+
+	&-leave {
+		opacity: 1;
+		transform: scale(1);
+
+		&-active {
+			opacity: 0;
+			transform: scale(1);
+
+			@include transition-all(0.5s);
+		}
+	}
+}

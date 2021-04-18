@@ -1,0 +1,72 @@
+$react-logo-border-color: #00d8ff !default;
+
+%react-logo-dflex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container-react-logo {
+	margin: 20px auto 0;
+	width: 250px;
+	height: 250px;
+	background: $bg-white;
+
+	@extend %react-logo-dflex;
+}
+
+%react-logo-after-before {
+	position: absolute;
+	display: inline-block;
+	width: 200px;
+	height: 70px;
+	border: 10px solid $react-logo-border-color;
+	border-radius: 50%;
+}
+
+.react-logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 10px solid $react-logo-border-color;
+	border-radius: 50%;
+	animation-name: rotate;
+	animation-duration: 5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+
+	@extend %react-logo-after-before;
+
+	&:before {
+		content: "";
+		transform: rotate(57deg);
+
+		@extend %react-logo-after-before;
+
+		@extend %react-logo-dflex;
+	}
+
+	&:after {
+		content: "";
+		transform: rotate(-57deg);
+
+		@extend %react-logo-after-before;
+
+		@extend %react-logo-dflex;
+	}
+}
+
+.nucleo {
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+	background: $react-logo-border-color;
+
+	@extend %react-logo-dflex;
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
