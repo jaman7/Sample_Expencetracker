@@ -2798,6 +2798,31 @@ var store = new ExpenceStore();
 
 /***/ }),
 
+/***/ "./src/jsx/Layout/SubmitBtn.jsx":
+/*!**************************************!*\
+  !*** ./src/jsx/Layout/SubmitBtn.jsx ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SubmitBtn": function() { return /* binding */ SubmitBtn; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var SubmitBtn = function SubmitBtn() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "form-group d-flex justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    type: "submit",
+    className: "btn btn-primary"
+  }, "Add transaction"));
+};
+/* harmony default export */ __webpack_exports__["default"] = (SubmitBtn);
+
+/***/ }),
+
 /***/ "./src/jsx/components/AddTransaction.jsx":
 /*!***********************************************!*\
   !*** ./src/jsx/components/AddTransaction.jsx ***!
@@ -2813,12 +2838,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
+/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
+/* harmony import */ var _Layout_SubmitBtn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Layout/SubmitBtn */ "./src/jsx/Layout/SubmitBtn.jsx");
+
+
+/* eslint-disable jsx-a11y/label-has-for */
+
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
+/* eslint-disable jsx-a11y/control-has-associated-label */
 
 
 
 
-var AddTransaction = (0,mobx_react__WEBPACK_IMPORTED_MODULE_3__.inject)('ExpenceStore')((0,mobx_react__WEBPACK_IMPORTED_MODULE_3__.observer)(function (props) {
+var AddTransaction = (0,mobx_react__WEBPACK_IMPORTED_MODULE_4__.inject)('ExpenceStore')((0,mobx_react__WEBPACK_IMPORTED_MODULE_4__.observer)(function (props) {
   var ExpenceStore = props.ExpenceStore;
   var addTransaction = ExpenceStore.addTransaction;
 
@@ -2832,6 +2865,9 @@ var AddTransaction = (0,mobx_react__WEBPACK_IMPORTED_MODULE_3__.inject)('Expence
       amount = _useState4[0],
       setAmount = _useState4[1];
 
+  var textInput = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createRef)();
+  var numberInput = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.createRef)();
+
   var onSubmit = function onSubmit(e) {
     e.preventDefault();
     var newTransaction = {
@@ -2839,6 +2875,24 @@ var AddTransaction = (0,mobx_react__WEBPACK_IMPORTED_MODULE_3__.inject)('Expence
       amount: +amount
     };
     addTransaction(newTransaction, e);
+    numberInput.current.value = 0;
+    textInput.current.value = '';
+  };
+
+  var handleValueChanged = function handleValueChanged(val, e) {
+    e.preventDefault();
+    setAmount(val);
+    numberInput.current.value = val;
+  };
+
+  var handleStepUp = function handleStepUp(e) {
+    e.preventDefault();
+    handleValueChanged(amount + 1, e);
+  };
+
+  var handleStepDown = function handleStepDown(e) {
+    e.preventDefault();
+    handleValueChanged(amount - 1, e);
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
@@ -2854,7 +2908,7 @@ var AddTransaction = (0,mobx_react__WEBPACK_IMPORTED_MODULE_3__.inject)('Expence
     className: "form-group col-md-6"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "text"
-  }, "Text", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
+  }, "Text"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     id: "text",
     name: "text",
     className: "form-control",
@@ -2863,12 +2917,21 @@ var AddTransaction = (0,mobx_react__WEBPACK_IMPORTED_MODULE_3__.inject)('Expence
     value: text,
     onChange: function onChange(e) {
       return setText(e.target.value);
-    }
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    },
+    ref: textInput
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
     className: "form-group col-md-6"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("label", {
     htmlFor: "amount"
-  }, "Amount (negative - expense, positive - income)", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
+  }, "Amount (negative - expense, positive - income)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+    className: "number-input"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+    type: "button",
+    className: "minus",
+    onClick: function onClick(e) {
+      return handleStepDown(e);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
     id: "amount",
     name: "amount",
     className: "form-control",
@@ -2877,13 +2940,15 @@ var AddTransaction = (0,mobx_react__WEBPACK_IMPORTED_MODULE_3__.inject)('Expence
     value: amount,
     onChange: function onChange(e) {
       return setAmount(e.target.value);
-    }
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
-    className: "form-group d-flex justify-content-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
-    type: "submit",
-    className: "btn btn-primary"
-  }, "Add transaction")))));
+    },
+    ref: numberInput
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+    type: "button",
+    onClick: function onClick(e) {
+      return handleStepUp(e);
+    },
+    className: "plus"
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_Layout_SubmitBtn__WEBPACK_IMPORTED_MODULE_3__.SubmitBtn, null))));
 }));
 AddTransaction.wrappedComponent.propTypes = {
   ExpenceStore: prop_types__WEBPACK_IMPORTED_MODULE_2___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_2___default().object), (prop_types__WEBPACK_IMPORTED_MODULE_2___default().array)]).isRequired
