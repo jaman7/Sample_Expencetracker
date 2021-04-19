@@ -34,9 +34,8 @@ class ExpenceStore {
 	}
 
 	// find index return
-	@action findIndexTransaction = (currentid) => {
+	@action findIndexTransaction = (currentid) =>
 		this.transactions.findIndex((item) => item._id === currentid);
-	};
 
 	@action async Retrieve() {
 		try {
