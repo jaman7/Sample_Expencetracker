@@ -1,7 +1,7 @@
-$BgcolorList: #4132ba !default;
+$BgcolorList: #d0e6f5 !default;
 $BgcolorItem: #443a92 !default;
-$BgcolorPlus: #27843d !default;
-$BgcolorMinus: #721c24 !default;
+$BgcolorPlus: #85c293 !default;
+$BgcolorMinus: #e04151 !default;
 
 %flex {
 	display: flex;
@@ -25,7 +25,7 @@ $BgcolorMinus: #721c24 !default;
 		@extend %flex;
 		justify-content: center;
 		align-items: baseline;
-		background-color: green;
+		background-color: $BgcolorPlus;
 		color: $colorWhite;
 		border-radius: 10px;
 	}
@@ -152,7 +152,8 @@ $BgcolorMinus: #721c24 !default;
 	}
 
 	& .bg-form {
-		background-color: honeydew;
+		background-color: $BgcolorList;
+		border-radius: 10px;
 	}
 
 	& svg.chart {
