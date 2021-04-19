@@ -157,6 +157,18 @@ $BgcolorMinus: #721c24 !default;
 }
 
 .fade {
+	&-appear {
+		opacity: 0;
+		z-index: 1;
+		transform: scale(0);
+
+		&-active {
+			transform: scale(1);
+			opacity: 1;
+			@include transition-all(0.5s);
+		}
+	}
+
 	&-enter {
 		opacity: 0;
 		transform: scale(1.1);

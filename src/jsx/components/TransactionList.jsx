@@ -29,6 +29,9 @@ export const TransactionList = inject('ExpenceStore')(
 								{transactions &&
 									transactions.map((transaction, i) => (
 										<CSSTransition
+											in
+											appear
+											unmountOnExit
 											timeout={500}
 											classNames="fade"
 											key={`fade-${transaction._id}`}
