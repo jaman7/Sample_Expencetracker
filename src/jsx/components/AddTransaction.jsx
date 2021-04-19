@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
+import Form from 'react-bootstrap/Form';
 
-import { SubmitBtn } from '../Layout/SubmitBtn';
+import Button from '../Layout/Button';
+// import Input from '../Layout/Input';
 
 export const AddTransaction = inject('ExpenceStore')(
 	observer((props) => {
@@ -53,48 +54,59 @@ export const AddTransaction = inject('ExpenceStore')(
 					<h3 className="transaction-desc">Add new transaction</h3>
 					<form className="transaction-form py-4" onSubmit={onSubmit}>
 						<div className="form-row">
-							<div className="form-group col-md-6">
-								<label htmlFor="text">Text</label>
-								<input
-									id="text"
-									name="text"
-									className="form-control"
+							<Form.Group controlId="text" className="col-md-6">
+								<Form.Label>Text</Form.Label>
+								<Form.Control
 									type="text"
 									placeholder="Enter text..."
 									value={text}
 									onChange={(e) => setText(e.target.value)}
 									ref={textInput}
+									autoComplete="off"
 								/>
-							</div>
-							<div className="form-group col-md-6">
-								<label htmlFor="amount">
+							</Form.Group>
+
+							<Form.Group controlId="amount" className="col-md-6">
+								<Form.Label>
 									Amount (negative - expense, positive - income)
-								</label>
+								</Form.Label>
 								<div className="number-input">
-									<button
+									<Button
 										type="button"
 										className="minus"
+										title="minus"
+										aria-label="minus"
 										onClick={(e) => handleStepDown(e)}
 									/>
-									<input
+									<Form.Control
 										id="amount"
 										name="amount"
-										className="form-control"
 										type="number"
 										placeholder="Enter amount..."
 										value={amount}
 										onChange={(e) => setAmount(e.target.value)}
 										ref={numberInput}
 									/>
-									<button
+									<Button
 										type="button"
-										onClick={(e) => handleStepUp(e)}
 										className="plus"
+										title="plus"
+										aria-label="plus"
+										onClick={(e) => handleStepUp(e)}
 									/>
 								</div>
-							</div>
+							</Form.Group>
 						</div>
-						<SubmitBtn />
+						<div className="form-group d-flex justify-content-center">
+							<Button
+								type="submit"
+								className="btn btn-primary"
+								title="Add transaction"
+								aria-label="Add transaction"
+							>
+								Add transaction
+							</Button>
+						</div>
 					</form>
 				</div>
 			</>

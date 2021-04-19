@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
+import Form from 'react-bootstrap/Form';
+
+import Button from '../Layout/Button';
+import Trashicon from '../Layout/Trashicon';
 
 export const Transaction = inject('ExpenceStore')(
 	observer((props) => {
@@ -31,10 +35,8 @@ export const Transaction = inject('ExpenceStore')(
 							{transaction.text}
 						</p>
 					) : (
-						<div className="form-group" role="presentation">
-							<input
-								id={`InputText${transaction._id}`}
-								className="form-control"
+						<Form.Group controlId={`InputText${transaction._id}`}>
+							<Form.Control
 								type="text"
 								autoComplete="off"
 								maxLength={100}
@@ -60,7 +62,7 @@ export const Transaction = inject('ExpenceStore')(
 									}
 								}}
 							/>
-						</div>
+						</Form.Group>
 					)}
 
 					{!transaction.editing2 ? (
@@ -72,11 +74,10 @@ export const Transaction = inject('ExpenceStore')(
 							{sign}${Math.abs(transaction.amount)}
 						</span>
 					) : (
-						<div className="form-group" role="presentation">
-							<input
-								id={`InputAmount${transaction.id}`}
-								className="form-control"
+						<Form.Group controlId={`InputAmount${transaction.id}`}>
+							<Form.Control
 								type="number"
+								autoComplete="off"
 								defaultValue={transaction.amount}
 								onBlur={(e) =>
 									doneEditTransaction(transaction, 'amount', transaction._id, e)
@@ -99,18 +100,19 @@ export const Transaction = inject('ExpenceStore')(
 									}
 								}}
 							/>
-						</div>
+						</Form.Group>
 					)}
 				</div>
 				<div className="col-1 px-1 action">
-					<button
+					<Button
 						type="button"
-						variant="primary"
 						className="btn btn-primary btn-remove"
+						title={`Remove transaction ${transaction._id}`}
+						aria-label={`Remove transaction ${transaction._id}`}
 						onClick={(e) => deleteTransaction(transaction._id, e)}
 					>
-						<i className="fas fa-trash-alt" title="Remove" />
-					</button>
+						<Trashicon />
+					</Button>
 				</div>
 			</li>
 		);

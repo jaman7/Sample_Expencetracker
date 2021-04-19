@@ -113,6 +113,10 @@ $BgcolorMinus: #721c24 !default;
 				padding-top: 0.2rem;
 				padding-bottom: 0.2rem;
 			}
+
+			& .form-group {
+				margin-bottom: 0;
+			}
 		}
 
 		& .index {
