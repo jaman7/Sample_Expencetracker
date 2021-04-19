@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
 
+import Loading from '../Layout/Loading';
+
 export const IncomeExpenses = inject('ExpenceStore')(
 	observer((props) => {
 		const { ExpenceStore } = props;
@@ -22,11 +24,11 @@ export const IncomeExpenses = inject('ExpenceStore')(
 			<div className="row mx-0 p-2 w-100 transaction-bilance">
 				<div className="col-12 col-md-6 transaction-bilance_item">
 					<h4 className="text-center transaction-desc">Income</h4>
-					<p className="text-center">{income}</p>
+					<p className="text-center">{transactions.length > 0 ? income : <Loading />}</p>
 				</div>
 				<div className="col-12 col-md-6 transaction-bilance_item">
 					<h4 className="text-center transaction-desc">Expense</h4>
-					<p className="text-center">{expense}</p>
+					<p className="text-center">{transactions.length > 0 ? expense : <Loading />}</p>
 				</div>
 			</div>
 		);

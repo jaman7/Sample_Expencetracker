@@ -8,7 +8,7 @@ configure({
 });
 
 class ExpenceStore {
-	isLoading = true;
+	isLoading = false;
 
 	transactions = [];
 
@@ -39,6 +39,7 @@ class ExpenceStore {
 
 	@action async Retrieve() {
 		try {
+			this.isLoading = true;
 			const responce = await restdbInstance.get('expencetable');
 			const responceData = responce.data;
 

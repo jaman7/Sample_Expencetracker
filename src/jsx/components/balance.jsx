@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
 
+import Loading from '../Layout/Loading';
+
 export const Balance = inject('ExpenceStore')(
 	observer((props) => {
 		const { ExpenceStore } = props;
@@ -12,7 +14,7 @@ export const Balance = inject('ExpenceStore')(
 		return (
 			<div className="col-12 py-3 transaction-balance">
 				<h3 className="transaction-desc">
-					Your Balance: <span>${total}</span>
+					Your Balance: <span>${transactions.length > 0 ? total : <Loading />}</span>
 				</h3>
 			</div>
 		);
