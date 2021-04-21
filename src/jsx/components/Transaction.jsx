@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
 import Form from 'react-bootstrap/Form';
+import { toJS } from 'mobx';
 
 import Button from '../Layout/Button';
 import Trashicon from '../Layout/Trashicon';
+import PendingIcon from '../Layout/pendingicon';
 
 export const Transaction = inject('ExpenceStore')(
 	observer((props) => {
@@ -13,19 +15,23 @@ export const Transaction = inject('ExpenceStore')(
 			deleteTransaction,
 			editTransaction,
 			doneEditTransaction,
-			cancelEditTransaction
+			cancelEditTransaction,
+			isPending,
+			currentTransaction
 		} = ExpenceStore;
 
 		const sign = transaction.amount < 0 ? '-' : '+';
 
 		const liClass = transaction.amount < 0 ? 'minus' : 'plus';
 
+		console.log(toJS(isPending));
+
 		return (
 			<li className={`col item ${liClass}`}>
 				<div className="col-1 px-1 index">
 					<span>{`${index}.`}</span>
 				</div>
-				<div className="col-10 px-1 content">
+				<div className="col px-1 content">
 					{!transaction.editing ? (
 						<p
 							onDoubleClick={(e) =>
@@ -103,7 +109,9 @@ export const Transaction = inject('ExpenceStore')(
 						</Form.Group>
 					)}
 				</div>
+
 				<div className="col-1 px-1 action">
+					{isPending && currentTransaction === transaction._id ? <PendingIcon /> : <></>}
 					<Button
 						type="button"
 						className="btn btn-primary btn-remove"

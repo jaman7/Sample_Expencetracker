@@ -6,12 +6,12 @@ import { inject, observer } from 'mobx-react';
 import Form from 'react-bootstrap/Form';
 
 import Button from '../Layout/Button';
-// import Input from '../Layout/Input';
+import PendingIcon from '../Layout/pendingicon';
 
 export const AddTransaction = inject('ExpenceStore')(
 	observer((props) => {
 		const { ExpenceStore } = props;
-		const { addTransaction } = ExpenceStore;
+		const { addTransaction, addCurrTransaction } = ExpenceStore;
 
 		const [text, setText] = useState([]);
 		const [amount, setAmount] = useState(0);
@@ -97,7 +97,7 @@ export const AddTransaction = inject('ExpenceStore')(
 								</div>
 							</Form.Group>
 						</div>
-						<div className="form-group d-flex justify-content-center">
+						<div className="form-group d-flex justify-content-center align-items-center flex-column">
 							<Button
 								type="submit"
 								className="btn btn-primary"
@@ -106,6 +106,13 @@ export const AddTransaction = inject('ExpenceStore')(
 							>
 								Add transaction
 							</Button>
+							{addCurrTransaction ? (
+								<div className="pending-icon">
+									<PendingIcon />
+								</div>
+							) : (
+								<></>
+							)}
 						</div>
 					</form>
 				</div>

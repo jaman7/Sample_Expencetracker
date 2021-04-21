@@ -10,6 +10,12 @@ configure({
 class ExpenceStore {
 	isLoading = false;
 
+	isPending = false;
+
+	currentTransaction = null;
+
+	addCurrTransaction = false;
+
 	transactions = [];
 
 	todoInputNameTransaction = React.createRef();
@@ -25,7 +31,10 @@ class ExpenceStore {
 	constructor() {
 		makeObservable(this, {
 			isLoading: observable,
+			isPending: observable,
 			transactions: observable,
+			currentTransaction: observable,
+			addCurrTransaction: observable,
 			todoInputNameTransaction: observable,
 			todoInputValueTransaction: observable,
 			beforeEditCache: observable,
@@ -58,42 +67,52 @@ class ExpenceStore {
 	}
 
 	// addTransaction
-	@action addTransaction = (transaction, e) => {
-		e.preventDefault();
-		restdbInstance
-			.post('expencetable', transaction)
-			.then((res) => {
-				if (res.statusText === 'Created') {
-					runInAction(() => {
-						this.transactions.push({
-							editing: false,
-							editing2: false,
-							_id: res.data._id,
-							text: res.data.text,
-							amount: res.data.amount
-						});
+	@action addTransaction = async (transaction, e) => {
+		try {
+			e.preventDefault();
+			this.addCurrTransaction = true;
+			const response = await restdbInstance.post('expencetable', transaction);
+			if (response.status === 201) {
+				runInAction(() => {
+					this.transactions.push({
+						editing: false,
+						editing2: false,
+						_id: response.data._id,
+						text: response.data.text,
+						amount: response.data.amount
 					});
-				}
-			})
-			.catch((error) => {
+					this.addCurrTransaction = false;
+					console.log(toJS(this.transactions));
+				});
+			}
+		} catch (error) {
+			runInAction(() => {
 				console.log(error);
 			});
+		}
 	};
 
 	// deleteTransaction
-	@action deleteTransaction = (id, e) => {
-		e.preventDefault();
-		restdbInstance
-			.delete(`expencetable/${id}`)
-			.then(() => {
+	@action deleteTransaction = async (id, e) => {
+		try {
+			e.preventDefault();
+			this.isPending = true;
+			this.currentTransaction = id;
+			const response = await restdbInstance.delete(`expencetable/${id}`);
+			if (response.status === 200) {
 				runInAction(() => {
 					const index = this.findIndexTransaction(id);
 					this.transactions.splice(index, 1);
+					this.isPending = false;
+					this.currentTransaction = null;
+					console.log(toJS(this.transactions));
 				});
-			})
-			.catch((error) => {
+			}
+		} catch (error) {
+			runInAction(() => {
 				console.log(error);
 			});
+		}
 	};
 
 	// editTransaction
@@ -113,43 +132,48 @@ class ExpenceStore {
 	};
 
 	// doneEditTransaction
-	@action doneEditTransaction = (transaction, data, id, e) => {
-		let datavalue = '';
-		if (data === 'text') {
-			transaction.editing = false;
-			if (e.target.value.trim().length === 0) {
-				transaction.text = this.beforeEditCache;
+	@action doneEditTransaction = async (transaction, data, id, e) => {
+		try {
+			this.isPending = true;
+			let datavalue = '';
+			if (data === 'text') {
+				transaction.editing = false;
+				if (e.target.value.trim().length === 0) {
+					transaction.text = this.beforeEditCache;
+				} else {
+					transaction.text = e.target.value;
+				}
+
+				datavalue = transaction.text;
 			} else {
-				transaction.text = e.target.value;
+				transaction.editing2 = false;
+				if (e.target.value.trim().length === 0) {
+					transaction.amount = parseFloat(this.beforeEditCache);
+				} else {
+					transaction.amount = parseFloat(e.target.value);
+				}
+
+				datavalue = transaction.amount;
 			}
 
-			datavalue = transaction.text;
-		} else {
-			transaction.editing2 = false;
-			if (e.target.value.trim().length === 0) {
-				transaction.amount = parseFloat(this.beforeEditCache);
-			} else {
-				transaction.amount = parseFloat(e.target.value);
-			}
+			const profile = {};
+			profile[data] = datavalue;
 
-			datavalue = transaction.amount;
-		}
-
-		const profile = {};
-		profile[data] = datavalue;
-
-		restdbInstance
-			.put(`expencetable/${id}`, profile)
-			.then(() => {
+			const response = await restdbInstance.put(`expencetable/${id}`, profile);
+			if (response.status === 200) {
 				runInAction(() => {
 					const indexTransaction = this.findIndexTransaction(id);
 					this.transactions.splice(indexTransaction, 1, transaction);
 					this.beforeEditCache = '';
+					this.isPending = false;
 				});
-			})
-			.catch((error) => {
+			}
+			e.preventDefault();
+		} catch (error) {
+			runInAction(() => {
 				console.log(error);
 			});
+		}
 	};
 
 	// cancelEditTransaction
