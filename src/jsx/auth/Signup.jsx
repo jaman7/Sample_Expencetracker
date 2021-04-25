@@ -31,7 +31,8 @@ const Signup = inject('ExpenceStore')(
 		const password = useFormInput('');
 		const [error, setError] = useState(null);
 
-		const handleRegister = async () => {
+		const handleRegister = async (e) => {
+			e.preventDefault();
 			setError(null);
 			setLoading(true);
 			await restdbInstance
@@ -99,7 +100,7 @@ const Signup = inject('ExpenceStore')(
 										type="submit"
 										className="btn btn-primary"
 										value={loading ? 'Loading...' : 'Signup'}
-										onClick={handleRegister}
+										onClick={(e) => handleRegister(e)}
 										disabled={loading}
 									>
 										Sign Up

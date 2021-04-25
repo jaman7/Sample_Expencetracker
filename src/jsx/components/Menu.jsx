@@ -13,8 +13,6 @@ const Menu = inject('ExpenceStore')(
 
 		const user = getUser();
 
-		console.log(history);
-
 		const handleLogout = () => {
 			removeUserSession();
 			history.push(`/${baseURL}login`);

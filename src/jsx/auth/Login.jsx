@@ -25,11 +25,12 @@ const Login = inject('ExpenceStore')(
 		};
 
 		const [loading, setLoading] = useState(false);
+		const [error, setError] = useState(null);
 		const email = useFormInput('');
 		const password = useFormInput('');
-		const [error, setError] = useState(null);
 
-		const handleLogin = async () => {
+		const handleLogin = async (e) => {
+			e.preventDefault();
 			setError(null);
 			setLoading(true);
 			await restdbInstance
@@ -46,7 +47,7 @@ const Login = inject('ExpenceStore')(
 				})
 				.catch((err) => {
 					setLoading(false);
-					if (err.response.status === 401) setError(err.response.data.message);
+					if (err.status === 401) setError(err.data.message);
 					else setError('Something went wrong. Please try again later.');
 				});
 		};
@@ -89,7 +90,7 @@ const Login = inject('ExpenceStore')(
 										type="submit"
 										className="btn btn-primary"
 										value={loading ? 'Loading...' : 'Login'}
-										onClick={handleLogin}
+										onClick={(e) => handleLogin(e)}
 										disabled={loading}
 									>
 										Sign In

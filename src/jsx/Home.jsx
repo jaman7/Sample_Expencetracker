@@ -26,10 +26,10 @@ const Home = inject('ExpenceStore')(
 								<p className="lead">Dane logowania:</p>
 								<p className="lead d-flex flex-column">
 									<span>
-										login -<strong>user</strong>
+										login - <strong>user@o2.pl</strong>
 									</span>
 									<span>
-										hasło -<strong>user</strong>
+										hasło - <strong>user</strong>
 									</span>
 								</p>
 								<p className="small">

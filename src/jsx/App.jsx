@@ -27,8 +27,6 @@ class App extends Component {
 		const { ExpenceStore } = this.props;
 		const { token, setToken, baseURL } = ExpenceStore;
 
-		console.log(baseURL);
-
 		return (
 			<BrowserRouter>
 				<Switch>

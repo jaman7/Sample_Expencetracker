@@ -1,5 +1,5 @@
 import React from 'react';
-import { toJS, runInAction, makeObservable, configure, observable, action, computed } from 'mobx';
+import { runInAction, makeObservable, configure, observable, action, computed } from 'mobx';
 
 import restdbInstance from './resetdbAPI';
 import { BASE_URL } from './const/Constants';
@@ -11,7 +11,7 @@ configure({
 class ExpenceStore {
 	baseURL = BASE_URL;
 
-	userId = JSON.parse(sessionStorage.getItem('id'));
+	userId = JSON.parse(localStorage.getItem('id'));
 
 	token = '';
 
@@ -89,9 +89,9 @@ class ExpenceStore {
 		try {
 			e.preventDefault();
 			this.addCurrTransaction = true;
-			console.log(id);
+
 			const response = await restdbInstance.post(`usersdb/${id}/expencetable`, transaction);
-			console.log(toJS(response.data));
+
 			if (response.status === 201) {
 				runInAction(() => {
 					this.transactions.push({
@@ -102,7 +102,6 @@ class ExpenceStore {
 						amount: response.data.amount
 					});
 					this.addCurrTransaction = false;
-					console.log(toJS(this.transactions));
 				});
 			}
 		} catch (error) {
@@ -125,7 +124,6 @@ class ExpenceStore {
 					this.transactions.splice(index, 1);
 					this.isPending = false;
 					this.currentTransaction = null;
-					console.log(toJS(this.transactions));
 				});
 			}
 		} catch (error) {
@@ -146,7 +144,7 @@ class ExpenceStore {
 		}
 
 		const indexTransaction = this.findIndexTransaction(id);
-		console.log(toJS(indexTransaction));
+
 		this.transactions.splice(indexTransaction, 1, transaction);
 		e.preventDefault();
 	};

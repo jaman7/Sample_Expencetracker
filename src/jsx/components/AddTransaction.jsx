@@ -50,8 +50,8 @@ export const AddTransaction = inject('ExpenceStore')(
 			<>
 				<div className="col-12 py-3 bg-form">
 					<h3 className="transaction-desc">Add new transaction</h3>
-					<form className="transaction-form py-4" onSubmit={onSubmit}>
-						<div className="form-row">
+					<Form className="transaction-form py-4">
+						<Form.Row>
 							<Form.Group controlId="text" className="col-md-6">
 								<Form.Label>Text</Form.Label>
 								<Form.Control
@@ -77,8 +77,8 @@ export const AddTransaction = inject('ExpenceStore')(
 										onClick={(e) => handleStepDown(e)}
 									/>
 									<Form.Control
-										id="amount"
-										name="amount"
+										// id="amount"
+										// name="amount"
 										type="number"
 										placeholder="Enter amount..."
 										value={amount}
@@ -94,13 +94,14 @@ export const AddTransaction = inject('ExpenceStore')(
 									/>
 								</div>
 							</Form.Group>
-						</div>
+						</Form.Row>
 						<div className="form-group d-flex justify-content-center align-items-center flex-column">
 							<Button
 								type="submit"
 								className="btn btn-primary"
 								title="Add transaction"
 								aria-label="Add transaction"
+								onClick={onSubmit}
 							>
 								Add transaction
 							</Button>
@@ -112,7 +113,7 @@ export const AddTransaction = inject('ExpenceStore')(
 								<></>
 							)}
 						</div>
-					</form>
+					</Form>
 				</div>
 			</>
 		);
