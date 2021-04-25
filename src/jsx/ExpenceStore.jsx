@@ -2,12 +2,19 @@ import React from 'react';
 import { toJS, runInAction, makeObservable, configure, observable, action, computed } from 'mobx';
 
 import restdbInstance from './resetdbAPI';
+import { BASE_URL } from './const/Constants';
 
 configure({
 	enforceActions: 'observed'
 });
 
 class ExpenceStore {
+	baseURL = BASE_URL;
+
+	userId = JSON.parse(sessionStorage.getItem('id'));
+
+	token = '';
+
 	isLoading = false;
 
 	isPending = false;
@@ -30,6 +37,9 @@ class ExpenceStore {
 
 	constructor() {
 		makeObservable(this, {
+			baseURL: observable,
+			userId: observable,
+			token: observable,
 			isLoading: observable,
 			isPending: observable,
 			transactions: observable,
@@ -38,18 +48,26 @@ class ExpenceStore {
 			todoInputNameTransaction: observable,
 			todoInputValueTransaction: observable,
 			beforeEditCache: observable,
-			transactionsCount: computed
+			transactionsCount: computed,
+			setToken: observable
 		});
 	}
+
+	// setToken
+	@action setToken = (token) => {
+		runInAction(() => {
+			this.token = token;
+		});
+	};
 
 	// find index return
 	@action findIndexTransaction = (currentid) =>
 		this.transactions.findIndex((item) => item._id === currentid);
 
-	@action async Retrieve() {
+	@action async Retrieve(id) {
 		try {
 			this.isLoading = true;
-			const responce = await restdbInstance.get('expencetable');
+			const responce = await restdbInstance.get(`usersdb/${id}/expencetable`);
 			const responceData = responce.data;
 
 			responceData.forEach((res) => {
@@ -67,11 +85,13 @@ class ExpenceStore {
 	}
 
 	// addTransaction
-	@action addTransaction = async (transaction, e) => {
+	@action addTransaction = async (transaction, id, e) => {
 		try {
 			e.preventDefault();
 			this.addCurrTransaction = true;
-			const response = await restdbInstance.post('expencetable', transaction);
+			console.log(id);
+			const response = await restdbInstance.post(`usersdb/${id}/expencetable`, transaction);
+			console.log(toJS(response.data));
 			if (response.status === 201) {
 				runInAction(() => {
 					this.transactions.push({
@@ -98,7 +118,7 @@ class ExpenceStore {
 			e.preventDefault();
 			this.isPending = true;
 			this.currentTransaction = id;
-			const response = await restdbInstance.delete(`expencetable/${id}`);
+			const response = await restdbInstance.delete(`expencetables/${id}`);
 			if (response.status === 200) {
 				runInAction(() => {
 					const index = this.findIndexTransaction(id);
@@ -159,7 +179,7 @@ class ExpenceStore {
 			const profile = {};
 			profile[data] = datavalue;
 
-			const response = await restdbInstance.put(`expencetable/${id}`, profile);
+			const response = await restdbInstance.put(`expencetables/${id}`, profile);
 			if (response.status === 200) {
 				runInAction(() => {
 					const indexTransaction = this.findIndexTransaction(id);

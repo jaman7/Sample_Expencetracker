@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
@@ -11,7 +9,7 @@ import PendingIcon from '../Layout/pendingicon';
 export const AddTransaction = inject('ExpenceStore')(
 	observer((props) => {
 		const { ExpenceStore } = props;
-		const { addTransaction, addCurrTransaction } = ExpenceStore;
+		const { addTransaction, addCurrTransaction, userId } = ExpenceStore;
 
 		const [text, setText] = useState([]);
 		const [amount, setAmount] = useState(0);
@@ -27,7 +25,7 @@ export const AddTransaction = inject('ExpenceStore')(
 				amount: +amount
 			};
 
-			addTransaction(newTransaction, e);
+			addTransaction(newTransaction, userId, e);
 			numberInput.current.value = 0;
 			textInput.current.value = '';
 		};

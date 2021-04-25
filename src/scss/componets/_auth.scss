@@ -1,0 +1,69 @@
+$font-color: #202b5c !default;
+$color-red: rgb(255, 0, 0) !default;
+$bg-content: #f2fbff !default;
+
+%btn-auth {
+	@include padding(0.5rem 2rem);
+	background-color: $bg-content;
+	border-radius: 1rem;
+	text-decoration: none;
+	font-weight: 500;
+	transition: opacity 0.3s ease-in-out;
+	color: $colorFontNormal;
+
+	&:hover {
+		opacity: 0.7;
+	}
+}
+
+.auth {
+	background-color: $bg;
+	color: lighten($font-color, 45%);
+
+	& form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	& h4 {
+		color: lighten($font-color, 45%);
+		@include padding(1rem);
+	}
+
+	& button {
+		@extend %btn-auth;
+		@include padding(0.2rem 1rem);
+		color: lighten($font-color, 30%);
+	}
+
+	& .error {
+		color: $color-red;
+		@include padding(0.4rem null);
+	}
+
+	& .link {
+		color: lighten($font-color, 45%);
+		transition: opacity 300ms ease-in-out;
+
+		&:hover {
+			text-decoration: none;
+			opacity: 0.8;
+		}
+	}
+}
+
+.signin-form {
+	& label {
+		color: lighten($font-color, 45%);
+		margin-bottom: 0.25rem;
+	}
+	& .form-control {
+		border-radius: 1rem;
+		margin-bottom: 0.1rem;
+
+		&.invalid {
+			border: 2px solid $color-red;
+		}
+	}
+}

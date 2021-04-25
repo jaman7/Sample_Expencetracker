@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
 import Form from 'react-bootstrap/Form';
-import { toJS } from 'mobx';
 
 import Button from '../Layout/Button';
 import Trashicon from '../Layout/Trashicon';
@@ -23,8 +22,6 @@ export const Transaction = inject('ExpenceStore')(
 		const sign = transaction.amount < 0 ? '-' : '+';
 
 		const liClass = transaction.amount < 0 ? 'minus' : 'plus';
-
-		console.log(toJS(isPending));
 
 		return (
 			<li className={`col item ${liClass}`}>

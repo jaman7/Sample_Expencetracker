@@ -1,0 +1,21 @@
+.navbar {
+	background-color: $bg;
+}
+
+.nav-users {
+	@include padding(0.5rem null);
+	align-items: center;
+
+	& a {
+		@extend %border-bg-transparernt;
+		border-radius: 0.5rem;
+
+		& span {
+			margin-right: 0.5rem;
+		}
+	}
+
+	& .user-logo {
+		max-height: 44px;
+	}
+}

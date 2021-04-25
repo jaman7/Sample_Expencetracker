@@ -1,8 +1,8 @@
+/* eslint-disable react/button-has-type */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 const Button = ({ children, className, onClick, type }) => (
-	/* eslint-disable react/button-has-type */
 	<button className={className} onClick={onClick} type={type !== null ? type : 'button'}>
 		{children}
 	</button>
