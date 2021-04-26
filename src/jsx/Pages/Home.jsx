@@ -4,6 +4,7 @@ import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 
 import AccuntDefaults from '../Layout/AccuntDefaults';
+import P from '../Layout/P';
 
 const Home = inject('ExpenceStore')(
 	observer((props) => {
@@ -18,28 +19,29 @@ const Home = inject('ExpenceStore')(
 							<div className="d-flex justify-content-center vh-100 align-items-center flex-column">
 								<h1 className="text-center">Expence tracker app</h1>
 
-								<p className="lead text-center">
+								<P className="lead text-center">
 									Aby się zalogować proszę kliknąć poniższy przycisk.
-								</p>
+								</P>
 								<Link to={`/${baseURL}login`} className="btn btn-lg btn-success">
 									Login
 								</Link>
 
-								<p className="lead mt-3">Dane logowania:</p>
-								<p className="lead d-flex flex-column text-center">
-									<AccuntDefaults />
-								</p>
+								<P className="lead mt-3 text-center">Dane logowania:</P>
 
-								<p className="lead">Lub utwórz konto</p>
+								<P className="lead d-flex flex-column text-center">
+									<AccuntDefaults />
+								</P>
+
+								<P className="lead text-center">Lub utwórz konto</P>
 
 								<Link to={`/${baseURL}signup`} className="btn btn-lg btn-success">
 									Register
 								</Link>
 
-								<p className="small text-center mt-5">
+								<P className="small text-center mt-5">
 									W aplikacji dwukrotne kliknięcie umożliwia edycję elementu.
 									Aplikacja w języku angielskim.
-								</p>
+								</P>
 							</div>
 						</div>
 					</div>

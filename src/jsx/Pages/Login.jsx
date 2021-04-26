@@ -11,6 +11,7 @@ import AccuntDefaults from '../Layout/AccuntDefaults';
 
 import MyInput from '../Layout/MyInput';
 import Button from '../Layout/Button';
+import P from '../Layout/P';
 
 const signInSchema = Yup.object().shape({
 	email: Yup.string().email().required('Email is required'),
@@ -122,10 +123,10 @@ const Login = inject('ExpenceStore')(
 									}}
 								</Formik>
 
-								<p className="lead mt-3 d-flex flex-column text-center">
+								<P className="lead mt-3 d-flex flex-column text-center">
 									Default login
 									<AccuntDefaults />
-								</p>
+								</P>
 
 								<Link to={`/${baseURL}signup`} className="link mt-3">
 									Dont have an account?

@@ -1,5 +1,10 @@
 .navbar {
 	background-color: $bg;
+	@include padding(0.25rem null);
+
+	& .logo {
+		max-height: 50px;
+	}
 }
 
 .nav-users {
@@ -16,6 +21,28 @@
 	}
 
 	& .user-logo {
-		max-height: 44px;
+		max-height: 40px;
+	}
+
+	& .dropdown {
+		background-color: $bg;
+	}
+
+	& .dropdown-menu {
+		background-color: $bg;
+		border: 1px solid $bg-blue;
+		border-radius: 0.5rem;
+	}
+
+	& .dropdown-item {
+		color: $colorWhite;
+		background-color: $bg;
+		transition: opacity background-color 300ms ease-in-out;
+
+		&:hover {
+			color: $colorWhite;
+			background-color: $bg;
+			opacity: 0.9;
+		}
 	}
 }

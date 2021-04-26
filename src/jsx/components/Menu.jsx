@@ -5,6 +5,7 @@ import { inject, observer } from 'mobx-react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
 import { getUser, removeUserSession } from '../Utils/Common';
+import Img from '../Layout/Img';
 
 const Menu = inject('ExpenceStore')(
 	observer((props) => {
@@ -21,7 +22,7 @@ const Menu = inject('ExpenceStore')(
 		const userData = () => (
 			<>
 				<span>{user}</span>
-				<img src="img/user.png" alt="user" className="img-fluid user-logo" />
+				<Img src="img/user.png" alt="user" className="img-fluid user-logo" />
 			</>
 		);
 
@@ -29,13 +30,7 @@ const Menu = inject('ExpenceStore')(
 			<>
 				<Navbar variant="dark" expand="lg">
 					<Navbar.Brand href={`/${baseURL}`}>
-						<img
-							src="img/todo.png"
-							width="30"
-							height="30"
-							className="d-inline-block align-top"
-							alt="React Bootstrap logo"
-						/>
+						<Img src="img/todo.png" className="logo img-fluid" alt="front-logo" />
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
