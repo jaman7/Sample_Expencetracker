@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 
+import AccuntDefaults from '../Layout/AccuntDefaults';
+
 const Home = inject('ExpenceStore')(
 	observer((props) => {
 		const { ExpenceStore } = props;
@@ -23,16 +25,18 @@ const Home = inject('ExpenceStore')(
 									Login
 								</Link>
 
-								<p className="lead">Dane logowania:</p>
-								<p className="lead d-flex flex-column">
-									<span>
-										login - <strong>user@o2.pl</strong>
-									</span>
-									<span>
-										hasło - <strong>user</strong>
-									</span>
+								<p className="lead mt-3">Dane logowania:</p>
+								<p className="lead d-flex flex-column text-center">
+									<AccuntDefaults />
 								</p>
-								<p className="small">
+
+								<p className="lead">Lub utwórz konto</p>
+
+								<Link to={`/${baseURL}signup`} className="btn btn-lg btn-success">
+									Register
+								</Link>
+
+								<p className="small mt-5">
 									W aplikacji dwukrotne kliknięcie umożliwia edycję elementu.
 									Aplikacja w języku angielskim.
 								</p>

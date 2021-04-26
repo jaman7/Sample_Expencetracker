@@ -9,8 +9,8 @@ const pkg = require('./package.json');
 const libraryName = pkg.name;
 
 module.exports = {
-	// mode: 'development',
-	mode: 'production',
+	mode: 'development',
+	// mode: 'production',
 	entry: path.resolve(__dirname, './src/jsx/index.jsx'),
 	devtool: false,
 	performance: {

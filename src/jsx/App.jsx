@@ -4,10 +4,10 @@ import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
 
-import Login from './auth/Login';
-import Signup from './auth/Signup';
-import Dashboard from './Dashboard';
-import Home from './Home';
+import Login from './Pages/Login';
+import Signup from './Pages/Signup';
+import Dashboard from './Pages/Dashboard';
+import Home from './Pages/Home';
 
 import PrivateRoute from './Utils/PrivateRoute';
 import PublicRoute from './Utils/PublicRoute';
@@ -25,7 +25,7 @@ class App extends Component {
 
 	render() {
 		const { ExpenceStore } = this.props;
-		const { token, setToken, baseURL } = ExpenceStore;
+		const { baseURL } = ExpenceStore;
 
 		return (
 			<BrowserRouter>

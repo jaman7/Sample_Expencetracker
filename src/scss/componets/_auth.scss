@@ -67,3 +67,12 @@ $bg-content: #f2fbff !default;
 		}
 	}
 }
+
+.error {
+	color: red;
+	font-size: 10px;
+}
+
+.inputError {
+	border-color: red;
+}

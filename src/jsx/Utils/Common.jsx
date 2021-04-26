@@ -6,6 +6,15 @@ export const getUser = () => {
 
 export const getToken = () => localStorage.getItem('token') || null;
 
+// export const getToken = () => {
+// 	const userStr = localStorage.getItem('token');
+// 	console.log(userStr);
+// 	if (userStr) {
+// 		return JSON.parse(userStr);
+// 	}
+// 	return null;
+// };
+
 export const removeUserSession = () => {
 	localStorage.removeItem('token');
 	localStorage.removeItem('user');

@@ -13,8 +13,6 @@ class ExpenceStore {
 
 	userId = JSON.parse(localStorage.getItem('id'));
 
-	token = '';
-
 	isLoading = false;
 
 	isPending = false;
@@ -39,7 +37,6 @@ class ExpenceStore {
 		makeObservable(this, {
 			baseURL: observable,
 			userId: observable,
-			token: observable,
 			isLoading: observable,
 			isPending: observable,
 			transactions: observable,
@@ -48,17 +45,9 @@ class ExpenceStore {
 			todoInputNameTransaction: observable,
 			todoInputValueTransaction: observable,
 			beforeEditCache: observable,
-			transactionsCount: computed,
-			setToken: observable
+			transactionsCount: computed
 		});
 	}
-
-	// setToken
-	@action setToken = (token) => {
-		runInAction(() => {
-			this.token = token;
-		});
-	};
 
 	// find index return
 	@action findIndexTransaction = (currentid) =>
@@ -85,9 +74,9 @@ class ExpenceStore {
 	}
 
 	// addTransaction
-	@action addTransaction = async (transaction, id, e) => {
+	@action addTransaction = async (transaction, id) => {
 		try {
-			e.preventDefault();
+			// e.preventDefault();
 			this.addCurrTransaction = true;
 
 			const response = await restdbInstance.post(`usersdb/${id}/expencetable`, transaction);
@@ -122,8 +111,9 @@ class ExpenceStore {
 				runInAction(() => {
 					const index = this.findIndexTransaction(id);
 					this.transactions.splice(index, 1);
-					this.isPending = false;
+
 					this.currentTransaction = null;
+					this.isPending = false;
 				});
 			}
 		} catch (error) {
