@@ -1,16 +1,16 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
-
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
 import { setUserSession } from '../Utils/Common';
 import restdbInstance from '../resetdbAPI';
 import AccuntDefaults from '../Layout/AccuntDefaults';
+
+import MyInput from '../Layout/MyInput';
+import Button from '../Layout/Button';
 
 const signInSchema = Yup.object().shape({
 	email: Yup.string().email().required('Email is required'),
@@ -54,6 +54,17 @@ const Login = inject('ExpenceStore')(
 				});
 		};
 
+		const dataInput = [
+			{
+				label: 'Email',
+				idName: 'email'
+			},
+			{
+				label: 'Password',
+				idName: 'password'
+			}
+		];
+
 		return (
 			<>
 				<div className="container-fluid auth">
@@ -72,43 +83,22 @@ const Login = inject('ExpenceStore')(
 										const { errors, touched, isValid, dirty } = formik;
 										return (
 											<Form className="signin-form">
-												<div className="form-group">
-													<label htmlFor="email">Email</label>
-													<Field
-														type="email"
-														name="email"
-														id="email"
-														className={`form-control ${
-															errors.email && touched.email
-																? ' input-error'
-																: null
-														}`}
-													/>
-													<ErrorMessage
-														name="email"
-														component="span"
-														className="error"
-													/>
-												</div>
-
-												<div className="form-group">
-													<label htmlFor="password">Password</label>
-													<Field
-														type="password"
-														name="password"
-														id="password"
-														className={`form-control ${
-															errors.email && touched.email
-																? ' input-error'
-																: null
-														}`}
-													/>
-													<ErrorMessage
-														name="password"
-														component="span"
-														className="error"
-													/>
-												</div>
+												{dataInput &&
+													dataInput.map((item) => (
+														<MyInput
+															key={`input-${item.idName}`}
+															label={item.label}
+															id={item.idName}
+															name={item.idName}
+															className={`form-control${
+																errors.email && touched.email
+																	? ' input-error'
+																	: ''
+															}`}
+															type="text"
+															autoComplete="off"
+														/>
+													))}
 
 												{error && (
 													<>
@@ -119,14 +109,14 @@ const Login = inject('ExpenceStore')(
 													</>
 												)}
 
-												<button
+												<Button
 													type="submit"
 													className="btn btn-primary"
 													value={loading ? 'Loading...' : 'Login'}
 													disabled={!(dirty && isValid)}
 												>
 													Sign In
-												</button>
+												</Button>
 											</Form>
 										);
 									}}

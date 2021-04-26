@@ -16,9 +16,9 @@ const Home = inject('ExpenceStore')(
 					<div className="row">
 						<div className="col-12">
 							<div className="d-flex justify-content-center vh-100 align-items-center flex-column">
-								<h1>Expence tracker app</h1>
+								<h1 className="text-center">Expence tracker app</h1>
 
-								<p className="lead">
+								<p className="lead text-center">
 									Aby się zalogować proszę kliknąć poniższy przycisk.
 								</p>
 								<Link to={`/${baseURL}login`} className="btn btn-lg btn-success">
@@ -36,7 +36,7 @@ const Home = inject('ExpenceStore')(
 									Register
 								</Link>
 
-								<p className="small mt-5">
+								<p className="small text-center mt-5">
 									W aplikacji dwukrotne kliknięcie umożliwia edycję elementu.
 									Aplikacja w języku angielskim.
 								</p>

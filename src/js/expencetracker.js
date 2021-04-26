@@ -6244,6 +6244,65 @@ var Loading = function Loading() {
 
 /***/ }),
 
+/***/ "./src/jsx/Layout/MyInput.jsx":
+/*!************************************!*\
+  !*** ./src/jsx/Layout/MyInput.jsx ***!
+  \************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
+
+
+
+
+
+ // import { toJS } from 'mobx';
+
+var MyInput = function MyInput(_ref) {
+  var label = _ref.label,
+      props = (0,_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__.default)(_ref, ["label"]);
+
+  // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
+  // which we can spread on <input> and alse replace ErrorMessage entirely.
+  var _useField = (0,formik__WEBPACK_IMPORTED_MODULE_5__.useField)(props),
+      _useField2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useField, 2),
+      field = _useField2[0],
+      meta = _useField2[1];
+
+  var id = props.id,
+      className = props.className;
+  var mainclass = className;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
+    className: "form-group"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("label", {
+    htmlFor: id
+  }, label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(formik__WEBPACK_IMPORTED_MODULE_5__.Field, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__.default)({}, field, props, {
+    className: mainclass
+  })), meta.touched && meta.error ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("span", {
+    className: "error"
+  }, meta.error) : null));
+};
+
+MyInput.propTypes = {
+  id: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string)
+};
+MyInput.defaultProps = {
+  id: '',
+  className: ''
+};
+/* harmony default export */ __webpack_exports__["default"] = (MyInput);
+
+/***/ }),
+
 /***/ "./src/jsx/Layout/Trashicon.jsx":
 /*!**************************************!*\
   !*** ./src/jsx/Layout/Trashicon.jsx ***!
@@ -6408,8 +6467,10 @@ var Home = (0,mobx_react__WEBPACK_IMPORTED_MODULE_3__.inject)('ExpenceStore')((0
     className: "col-12"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "d-flex justify-content-center vh-100 align-items-center flex-column"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Expence tracker app"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-    className: "lead"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+    className: "text-center"
+  }, "Expence tracker app"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "lead text-center"
   }, "Aby si\u0119 zalogowa\u0107 prosz\u0119 klikn\u0105\u0107 poni\u017Cszy przycisk."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
     to: "/".concat(baseURL, "login"),
     className: "btn btn-lg btn-success"
@@ -6423,7 +6484,7 @@ var Home = (0,mobx_react__WEBPACK_IMPORTED_MODULE_3__.inject)('ExpenceStore')((0
     to: "/".concat(baseURL, "signup"),
     className: "btn btn-lg btn-success"
   }, "Register"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
-    className: "small mt-5"
+    className: "small text-center mt-5"
   }, "W aplikacji dwukrotne klikni\u0119cie umo\u017Cliwia edycj\u0119 elementu. Aplikacja w j\u0119zyku angielskim."))))));
 }));
 Home.wrappedComponent.propTypes = {
@@ -6448,20 +6509,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
 /* harmony import */ var _Utils_Common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Utils/Common */ "./src/jsx/Utils/Common.jsx");
 /* harmony import */ var _resetdbAPI__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../resetdbAPI */ "./src/jsx/resetdbAPI.jsx");
 /* harmony import */ var _Layout_AccuntDefaults__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Layout/AccuntDefaults */ "./src/jsx/Layout/AccuntDefaults.jsx");
+/* harmony import */ var _Layout_MyInput__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Layout/MyInput */ "./src/jsx/Layout/MyInput.jsx");
+/* harmony import */ var _Layout_Button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Layout/Button */ "./src/jsx/Layout/Button.jsx");
 
 
 
 
-/* eslint-disable jsx-a11y/label-has-for */
 
-/* eslint-disable jsx-a11y/label-has-associated-control */
 
 
 
@@ -6479,7 +6540,7 @@ var initialValues = {
   email: '',
   password: ''
 };
-var Login = (0,mobx_react__WEBPACK_IMPORTED_MODULE_10__.inject)('ExpenceStore')((0,mobx_react__WEBPACK_IMPORTED_MODULE_10__.observer)(function (props) {
+var Login = (0,mobx_react__WEBPACK_IMPORTED_MODULE_12__.inject)('ExpenceStore')((0,mobx_react__WEBPACK_IMPORTED_MODULE_12__.observer)(function (props) {
   var ExpenceStore = props.ExpenceStore;
   var baseURL = ExpenceStore.baseURL;
 
@@ -6525,6 +6586,13 @@ var Login = (0,mobx_react__WEBPACK_IMPORTED_MODULE_10__.inject)('ExpenceStore')(
     };
   }();
 
+  var dataInput = [{
+    label: 'Email',
+    idName: 'email'
+  }, {
+    label: 'Password',
+    idName: 'password'
+  }];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
     className: "container-fluid auth"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
@@ -6546,37 +6614,21 @@ var Login = (0,mobx_react__WEBPACK_IMPORTED_MODULE_10__.inject)('ExpenceStore')(
         dirty = formik.dirty;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(formik__WEBPACK_IMPORTED_MODULE_5__.Form, {
       className: "signin-form"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-      className: "form-group"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("label", {
-      htmlFor: "email"
-    }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(formik__WEBPACK_IMPORTED_MODULE_5__.Field, {
-      type: "email",
-      name: "email",
-      id: "email",
-      className: "form-control ".concat(errors.email && touched.email ? ' input-error' : null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(formik__WEBPACK_IMPORTED_MODULE_5__.ErrorMessage, {
-      name: "email",
-      component: "span",
-      className: "error"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-      className: "form-group"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("label", {
-      htmlFor: "password"
-    }, "Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(formik__WEBPACK_IMPORTED_MODULE_5__.Field, {
-      type: "password",
-      name: "password",
-      id: "password",
-      className: "form-control ".concat(errors.email && touched.email ? ' input-error' : null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(formik__WEBPACK_IMPORTED_MODULE_5__.ErrorMessage, {
-      name: "password",
-      component: "span",
-      className: "error"
-    })), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("small", {
+    }, dataInput && dataInput.map(function (item) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Layout_MyInput__WEBPACK_IMPORTED_MODULE_10__.default, {
+        key: "input-".concat(item.idName),
+        label: item.label,
+        id: item.idName,
+        name: item.idName,
+        className: "form-control".concat(errors.email && touched.email ? ' input-error' : ''),
+        type: "text",
+        autoComplete: "off"
+      });
+    }), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("small", {
       style: {
         color: 'red'
       }
-    }, error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("button", {
+    }, error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Layout_Button__WEBPACK_IMPORTED_MODULE_11__.default, {
       type: "submit",
       className: "btn btn-primary",
       value: loading ? 'Loading...' : 'Login',
@@ -6584,7 +6636,7 @@ var Login = (0,mobx_react__WEBPACK_IMPORTED_MODULE_10__.inject)('ExpenceStore')(
     }, "Sign In"));
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("p", {
     className: "lead mt-3 d-flex flex-column text-center"
-  }, "Default login", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Layout_AccuntDefaults__WEBPACK_IMPORTED_MODULE_9__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Link, {
+  }, "Default login", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Layout_AccuntDefaults__WEBPACK_IMPORTED_MODULE_9__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Link, {
     to: "/".concat(baseURL, "signup"),
     className: "link mt-3"
   }, "Dont have an account?"))))));
@@ -6611,21 +6663,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobxreact.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var hash_it__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! hash-it */ "./node_modules/hash-it/dist/hash-it.js");
 /* harmony import */ var hash_it__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(hash_it__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
 /* harmony import */ var _Utils_Common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Utils/Common */ "./src/jsx/Utils/Common.jsx");
 /* harmony import */ var _resetdbAPI__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../resetdbAPI */ "./src/jsx/resetdbAPI.jsx");
+/* harmony import */ var _Layout_MyInput__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Layout/MyInput */ "./src/jsx/Layout/MyInput.jsx");
+/* harmony import */ var _Layout_Button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Layout/Button */ "./src/jsx/Layout/Button.jsx");
 
 
 
 
-/* eslint-disable jsx-a11y/label-has-for */
 
-/* eslint-disable jsx-a11y/label-has-associated-control */
 
 
 
@@ -6642,9 +6694,10 @@ var signInSchema = yup__WEBPACK_IMPORTED_MODULE_7__.object().shape({
 });
 var initialValues = {
   email: '',
+  name: '',
   password: ''
 };
-var Signup = (0,mobx_react__WEBPACK_IMPORTED_MODULE_10__.inject)('ExpenceStore')((0,mobx_react__WEBPACK_IMPORTED_MODULE_10__.observer)(function (props) {
+var Signup = (0,mobx_react__WEBPACK_IMPORTED_MODULE_12__.inject)('ExpenceStore')((0,mobx_react__WEBPACK_IMPORTED_MODULE_12__.observer)(function (props) {
   var ExpenceStore = props.ExpenceStore;
   var baseURL = ExpenceStore.baseURL;
 
@@ -6695,6 +6748,16 @@ var Signup = (0,mobx_react__WEBPACK_IMPORTED_MODULE_10__.inject)('ExpenceStore')
     };
   }();
 
+  var dataInput = [{
+    label: 'Email',
+    idName: 'email'
+  }, {
+    label: 'Name',
+    idName: 'name'
+  }, {
+    label: 'Password',
+    idName: 'password'
+  }];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
     className: "container-fluid auth"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
@@ -6716,56 +6779,27 @@ var Signup = (0,mobx_react__WEBPACK_IMPORTED_MODULE_10__.inject)('ExpenceStore')
         dirty = formik.dirty;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(formik__WEBPACK_IMPORTED_MODULE_6__.Form, {
       className: "signin-form"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-      className: "form-group"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("label", {
-      htmlFor: "email"
-    }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(formik__WEBPACK_IMPORTED_MODULE_6__.Field, {
-      type: "email",
-      name: "email",
-      id: "email",
-      className: "form-control ".concat(errors.email && touched.email ? ' input-error' : null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(formik__WEBPACK_IMPORTED_MODULE_6__.ErrorMessage, {
-      name: "email",
-      component: "span",
-      className: "error"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-      className: "form-group"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("label", {
-      htmlFor: "name"
-    }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(formik__WEBPACK_IMPORTED_MODULE_6__.Field, {
-      type: "text",
-      name: "name",
-      id: "name",
-      className: "form-control ".concat(errors.name && touched.name ? ' input-error' : null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(formik__WEBPACK_IMPORTED_MODULE_6__.ErrorMessage, {
-      name: "name",
-      component: "span",
-      className: "error"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("div", {
-      className: "form-group"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("label", {
-      htmlFor: "password"
-    }, "Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(formik__WEBPACK_IMPORTED_MODULE_6__.Field, {
-      type: "password",
-      name: "password",
-      id: "password",
-      className: "form-control ".concat(errors.email && touched.email ? ' input-error' : null)
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(formik__WEBPACK_IMPORTED_MODULE_6__.ErrorMessage, {
-      name: "password",
-      component: "span",
-      className: "error"
-    })), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("small", {
+    }, dataInput && dataInput.map(function (item) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Layout_MyInput__WEBPACK_IMPORTED_MODULE_10__.default, {
+        key: "input-".concat(item.idName),
+        label: item.label,
+        id: item.idName,
+        name: item.idName,
+        className: "form-control".concat(errors.email && touched.email ? ' input-error' : ''),
+        type: "text",
+        autoComplete: "off"
+      });
+    }), error && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("small", {
       style: {
         color: 'red'
       }
-    }, error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("button", {
+    }, error), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Layout_Button__WEBPACK_IMPORTED_MODULE_11__.default, {
       type: "submit",
       className: "btn btn-primary",
-      value: loading ? 'Loading...' : 'Sign In',
+      value: loading ? 'Loading...' : 'Sign up',
       disabled: !(dirty && isValid)
-    }, "Sign In"));
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Link, {
+    }, "Sign up"));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Link, {
     to: "/".concat(baseURL, "login"),
     className: "link mt-3"
   }, "Already have an account?"))))));

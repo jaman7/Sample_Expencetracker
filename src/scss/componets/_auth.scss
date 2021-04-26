@@ -29,6 +29,7 @@ $bg-content: #f2fbff !default;
 	& h4 {
 		color: lighten($font-color, 45%);
 		@include padding(1rem);
+		text-align: center;
 	}
 
 	& button {
@@ -43,6 +44,7 @@ $bg-content: #f2fbff !default;
 	}
 
 	& .link {
+		text-align: center;
 		color: lighten($font-color, 45%);
 		transition: opacity 300ms ease-in-out;
 
